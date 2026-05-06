@@ -63,10 +63,9 @@ function switchPage(pageId) {
 function renderDashboardStats() {
   const totalEmployees = employees.length;
 
-  // BUG (TICKET-001): This filters by "leave" instead of "on-leave".
-  // The employee status field uses "on-leave" but we're checking for "leave",
-  // so this will always return 0.
-  const onLeave = employees.filter((e) => e.status === "leave").length;
+  // Fixed (SCRUM-1): Corrected status filter from "leave" to "on-leave"
+  // to match the actual employee status values in data.js
+  const onLeave = employees.filter((e) => e.status === "on-leave").length;
 
   const activeEmployees = employees.filter(
     (e) => e.status === "active"
